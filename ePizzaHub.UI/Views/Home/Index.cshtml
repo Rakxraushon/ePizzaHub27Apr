@@ -1,0 +1,32 @@
+﻿@using ePizzaHub.Models;
+@model IEnumerable<ItemModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<h2>Pizza, Cold Drinks</h2>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4 mb-3">
+            <div class="card">
+                <img src="@item.ImageUrl" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text">@item.Description</p>
+                    <a href="javascript:void(0)" onclick="AddToCart('@item.Id','@item.Name','@item.UnitPrice',1)" class="btn btn-primary">Add To Cart</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="toast" id="toastCart">
+    <div class="toast-header">
+        <strong class="me-auto">Notification</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body"></div>
+</div>
